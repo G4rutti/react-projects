@@ -7,16 +7,15 @@ import CartInCards from "../components/CardInCarts.jsx"
 const Cart = () => {
   const { cart } = useSelector(state => state)
   const [totalCart, setTotalCart] = useState(0)
-  const [tamanho, setTamanho] = useState(cart.length)
 
   useEffect(() => {
     setTotalCart(cart.reduce((acc, curr) => acc + curr.price, 0))
-  }, cart)
+  }, [cart])
 
   return (
     <div className='flex flex-col'>
       <div className='mx-auto mt-5 text-center'>
-        <p>Quantidade de produtos no carrinho: <span className='font-bold'>{tamanho}</span></p>
+        <p>Quantidade de produtos no carrinho: <span className='font-bold'>{cart.length}</span></p>
         <p>Preço final: <span className='font-bold'>{totalCart}R$</span></p>
       </div>
       <div className='mx-auto grid grid-cols-1 w-full justify-start items-center mt-5 md:grid-cols-2 md:mt-10 lg:grid-cols-3 xl:grid-cols-4'>
