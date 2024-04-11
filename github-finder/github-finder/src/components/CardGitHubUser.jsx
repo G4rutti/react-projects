@@ -25,7 +25,7 @@ const cardGitHubUser = ({ avatar, nome, login, seguidores, seguindo, biografia ,
                         <i className="fa-solid fa-users"></i>
                     </div>
                     <div className='mr-1'>
-                        <p><span className='font-bold'>{seguindo}</span> seguindo |</p>
+                        <p><span className='font-bold'>{seguindo}</span> seguidores |</p>
                     </div>
                     <div>
                         <p><span className='font-bold'>{seguidores}</span> seguindo</p>
