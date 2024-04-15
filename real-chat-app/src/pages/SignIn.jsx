@@ -4,28 +4,23 @@ import { FcGoogle } from "react-icons/fc";
 
 import { Link, useNavigate } from "react-router-dom"
 import { auth } from '../database/firebase';
-import { signInWithEmailAndPassword, GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
+import { useAuthentication } from '../hooks/useAuthentication';
+import { GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
 
 
 const SignIn = () => {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+  const funcao = useAuthentication()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
-      const data = await signInWithEmailAndPassword(auth, email, senha)
-      console.log(data)
-      return data
-    } catch (error) {
-      console.log(error)
-    }
+    funcao.signIn(auth, email, senha)
   }
 
   const handleSubmitGoogle = (e) => {
     e.preventDefault()
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    funcao.signWithGoogle(auth)
   }
 
   return (

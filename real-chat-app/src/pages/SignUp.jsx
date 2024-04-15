@@ -39,8 +39,7 @@ const SignUp = () => {
 
     const handleSubmitGoogle = (e) => {
         e.preventDefault()
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider);
+        funcao.signWithGoogle(auth);
     }
 
     return (

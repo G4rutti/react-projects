@@ -3,10 +3,13 @@ import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai"
 import { auth } from '../database/firebase'
 import { signOut } from 'firebase/auth'
 import {Link} from "react-router-dom"
+import { useAuthentication } from '../hooks/useAuthentication';
+
 
 const NavBar = () => {
     const [nav, setNav] = useState(true)
     const [theme, setTheme] = useState(localStorage.getItem('theme'));
+    const funcao = useAuthentication()
 
 
     const handleToggle = (e) => {
@@ -25,7 +28,7 @@ const NavBar = () => {
         setNav(!nav)
     }
     const sair = () => {
-        signOut(auth)
+        funcao.sair(auth)
     }
 
     return (

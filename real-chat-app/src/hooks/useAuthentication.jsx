@@ -38,5 +38,24 @@ export const useAuthentication = () => {
         }
     }
 
-    return {criarConta}
+    function signWithGoogle(auth){
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+    }
+
+    async function signIn(auth, email, senha){
+        try {
+            const data = await signInWithEmailAndPassword(auth, email, senha)
+            console.log(data)
+            return data
+          } catch (error) {
+            console.log(error)
+          }
+    }
+
+    function sair(auth){
+        signOut(auth)
+    }
+
+    return {criarConta, signWithGoogle, signIn, sair}
 }
