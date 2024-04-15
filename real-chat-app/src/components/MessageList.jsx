@@ -34,7 +34,7 @@ const MessageList = ({ roomId }) => {
 function Message({ message, isOwnMessage }) {
     const { displayName, text } = message;
     return (
-        <div className={`chat ${isOwnMessage ? "chat-end" : "chat-starter"}`}>
+        <div className={`chat ${isOwnMessage ? "chat-end" : "chat-start"}`}>
             <h4 className="chat-header">{isOwnMessage ? 'You' : displayName}</h4>
             <div className='chat-bubble'>{text}</div>
         </div>
