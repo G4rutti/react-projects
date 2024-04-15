@@ -9,6 +9,7 @@ import { auth } from "./database/firebase";
 import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
 import Home from "./pages/Home"
+import ChatRoom from "./pages/ChatRoom";
 
 function App() {
   const [authUser, setAuthUser] = useState()
@@ -39,6 +40,7 @@ function App() {
             <Route path='/' element={authUser? <Home /> : <Navigate to='/signIn' />} />
             <Route path='/signup' element={authUser ? <Home /> : <SignUp />} />
             <Route path='/signin' element={authUser ? <Home /> : <SignIn />} />
+            <Route path='/sala/:id' element={authUser ? <ChatRoom /> : <SignIn />} />
           </Routes>
         </BrowserRouter>
       )}
