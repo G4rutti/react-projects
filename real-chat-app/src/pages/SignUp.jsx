@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom"
 
 import { auth } from '../database/firebase';
+import { useAuthentication } from '../hooks/useAuthentication';
 import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 
@@ -14,6 +15,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [error, setError] = useState("")
+    const funcao = useAuthentication()
 
 
     const handleSubmit = async (e) => {
@@ -22,38 +24,17 @@ const SignUp = () => {
             displayName,
             displayLastName,
             email,
-            password
+            password,
         }
-
+        console.log(usuario)
         if (password !== confirmPassword) {
             console.log("As senhas nao parecem iguais")
             setError("As senhas nao parecem iguais")
             return
         }
-        try {
-            const userCredential = await createUserWithEmailAndPassword(auth, usuario.email, usuario.password);
-            const user = userCredential.user;
-            await updateProfile(user, {
-                displayName: `${displayName} ${displayLastName}`
-            })
-            console.log(user)
-            return user
-        } catch (error) {
-            console.log(error)
-            console.log(typeof error.message)
+        funcao.criarConta(auth, usuario)
 
-            let systemErrorMessage
-            if (error.message.includes("Password")) {
-                systemErrorMessage = "A senha deve conter pelo menos 6 caracteres"
-            } else if (error.message.includes("email-already")) {
-                systemErrorMessage = "E-mail já cadastrado no sistema"
-            } else {
-                systemErrorMessage = "Ocorreu um erro, tente novamente mais tarde"
-            }
-            console.log(systemErrorMessage)
-            setError(systemErrorMessage)
-        }
-
+    
     }
 
     const handleSubmitGoogle = (e) => {

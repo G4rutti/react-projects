@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 
 import { Link, useNavigate } from "react-router-dom"
 import { auth } from '../database/firebase';
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { signInWithEmailAndPassword, GoogleAuthProvider,signInWithPopup } from 'firebase/auth';
 
 
 const SignIn = () => {

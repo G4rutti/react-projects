@@ -5,11 +5,12 @@ import { auth } from "./database/firebase";
 
 
 
-// Components
+// Pages
 import SignIn from "./pages/SignIn"
 import SignUp from "./pages/SignUp"
 import Home from "./pages/Home"
 import ChatRoom from "./pages/ChatRoom";
+import VerPerfil from "./pages/VerPerfil";
 
 function App() {
   const [authUser, setAuthUser] = useState()
@@ -41,6 +42,7 @@ function App() {
             <Route path='/signup' element={authUser ? <Home /> : <SignUp />} />
             <Route path='/signin' element={authUser ? <Home /> : <SignIn />} />
             <Route path='/sala/:id' element={authUser ? <ChatRoom /> : <SignIn />} />
+            <Route path='/verPerfil' element={authUser ? <VerPerfil /> : <SignIn />} />
           </Routes>
         </BrowserRouter>
       )}

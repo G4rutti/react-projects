@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai"
 import { auth } from '../database/firebase'
 import { signOut } from 'firebase/auth'
+import {Link} from "react-router-dom"
 
 const NavBar = () => {
     const [nav, setNav] = useState(true)
@@ -31,8 +32,8 @@ const NavBar = () => {
         <div className='flex justify-between items-center h-24 mx-auto px-4 bg-neutral'>
             <h1 className='w-full text-3xl font-bold text-white'>DGCHAT.</h1>
             <ul className='hidden md:flex text-white'>
-                <li className='p-4'>Home</li>
-                <li className='p-4 w-24'>Ver perfil</li>
+                <li className='p-4'><Link to="/">Home</Link></li>
+                <li className='p-4 w-24'><Link to="/verPerfil">Ver perfil</Link></li>
                 <li className='p-4' onClick={sair}>Sair</li>
                 <li className='p-4'>
                     <label className="flex cursor-pointer gap-2">
@@ -48,8 +49,8 @@ const NavBar = () => {
             <div className={!nav ? "fixed left-0 top-0 w-[60%] h-full border-r border-r-gray-900 ease-in-out duration-500 bg-neutral z-10" : "fixed left-[-100%] top-0 w-[60%] h-full border-r border-r-gray-900 bg-[#000300] ease-in-out duration-500"}>
                 <h1 className='w-full text-3xl font-bold text-white m-4'>DGCHAT.</h1>
                 <ul className='p-4 uppercase text-white'>
-                    <li className='p-4 border-b border-b-gray-600'>Home</li>
-                    <li className='p-4 border-b border-b-gray-600'>Ver perfil</li>
+                    <li className='p-4 border-b border-b-gray-600'><Link to="/">Home</Link></li>
+                    <li className='p-4 border-b border-b-gray-600'><Link to="/verPerfil">Ver perfil</Link></li>
                     <li className='p-4 border-b border-b-gray-600' onClick={sair}>Sair</li>
                     <li className='p-4'>
                         <label className="flex cursor-pointer gap-2">
