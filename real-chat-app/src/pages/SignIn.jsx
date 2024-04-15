@@ -4,7 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 
 import { Link, useNavigate } from "react-router-dom"
 import { auth } from '../database/firebase';
-import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithRedirect } from 'firebase/auth';
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 
 const SignIn = () => {
@@ -25,7 +25,7 @@ const SignIn = () => {
   const handleSubmitGoogle = (e) => {
     e.preventDefault()
     const provider = new GoogleAuthProvider();
-    signInWithRedirect(auth, provider);
+    signInWithPopup(auth, provider);
   }
 
   return (
