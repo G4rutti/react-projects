@@ -25,7 +25,7 @@ const SignIn = () => {
 
   return (
     <div className='w-full flex flex-col mx-auto h-[100vh]'>
-      <div className='w-[80vw] bg-gray-300 m-auto py-8 rounded-lg shadow-md'>
+      <div className='w-[80vw] bg-neutral m-auto py-8 rounded-lg shadow-md text-neutral-content'>
         <h1 className='mx-auto text-3xl font-bold uppercase text-center'>Entrar</h1>
         <form className='w-full flex flex-col py-4 px-8 mt-5'>
           <label htmlFor="email" className='input input-bordered my-2 py-2 px-4  flex items-center gap-2'>

@@ -5,7 +5,6 @@ import { Link, useNavigate } from "react-router-dom"
 
 import { auth } from '../database/firebase';
 import { useAuthentication } from '../hooks/useAuthentication';
-import { createUserWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 
 const SignUp = () => {
@@ -44,7 +43,7 @@ const SignUp = () => {
 
     return (
         <div className='w-full flex flex-col mx-auto h-[100vh]'>
-            <div className='w-[80vw] bg-gray-300 m-auto py-8 rounded-lg shadow-md'>
+            <div className='w-[80vw] bg-neutral text-neutral-content m-auto py-8 rounded-lg shadow-md'>
                 <h1 className='mx-auto text-3xl font-bold uppercase text-center'>Cadastre-se</h1>
                 <form className='w-full flex flex-col py-4 px-8 mt-5 '>
                     <button className='btn' onClick={handleSubmitGoogle}><FcGoogle /> Cadastrar-se com google</button>
