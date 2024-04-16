@@ -57,5 +57,17 @@ export const useAuthentication = () => {
         signOut(auth)
     }
 
-    return {criarConta, signWithGoogle, signIn, sair}
+    function atualizarUser(auth, name, photo){
+        try {
+            updateProfile(auth, {
+                displayName: name,
+                photoURL: photo
+            })
+        } catch (error) {
+            console.log(error)
+        }
+        
+    }
+
+    return {criarConta, signWithGoogle, signIn, sair, atualizarUser}
 }
