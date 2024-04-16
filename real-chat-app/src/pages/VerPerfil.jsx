@@ -33,6 +33,9 @@ const VerPerfil = () => {
   const handleUpdate = () => {
     funcao.atualizarUser(authUser, nomeUser, photoUser)
   }
+  const handleLogout = () => {
+    funcao.sair(auth)
+  }
   return (
     <div>
       <NavBar />
@@ -47,7 +50,7 @@ const VerPerfil = () => {
         </div>
         <div className='flex gap-2 mt-2'>
           <button className='btn btn-neutral' onClick={() => document.getElementById('my_modal_5').showModal()}>Editar Perfil</button>
-          <button className='btn btn-error'>Deslogar</button>
+          <button className='btn btn-error' onClick={handleLogout}>Deslogar</button>
         </div>
       </div>
       <dialog id="my_modal_5" className="modal sm:modal-middle">
