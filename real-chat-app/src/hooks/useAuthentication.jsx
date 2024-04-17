@@ -11,20 +11,20 @@ import {
 
 export const useAuthentication = () => {
     const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(false)
+
     async function criarConta(auth, data) {
         try {
-            console.log(data)
+            setLoading(true)
             const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
             const user = userCredential.user;
             await updateProfile(user, {
                 displayName: `${data.displayName} ${data.displayLastName}`
             })
-            console.log(user)
+            setLoading(false)
             return user
         } catch (error) {
             console.log(error)
-            console.log(typeof error.message)
-
             let systemErrorMessage
             if (error.message.includes("Password")) {
                 systemErrorMessage = "A senha deve conter pelo menos 6 caracteres"
@@ -40,13 +40,21 @@ export const useAuthentication = () => {
 
     function signWithGoogle(auth){
         const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider)
+        try {
+            setLoading(true)
+            signInWithPopup(auth, provider)
+            setLoading(false)
+        } catch (error) {
+            setError(error)
+        }
     }
 
     async function signIn(auth, email, senha){
         try {
+            setLoading(true)
             const data = await signInWithEmailAndPassword(auth, email, senha)
             console.log(data)
+            setLoading(false)
             return data
           } catch (error) {
             console.log(error)
@@ -59,15 +67,17 @@ export const useAuthentication = () => {
 
     function atualizarUser(auth, name, photo){
         try {
+            setLoading(true)
             updateProfile(auth, {
                 displayName: name,
                 photoURL: photo
             })
+            setLoading(false)
         } catch (error) {
             console.log(error)
         }
         
     }
 
-    return {criarConta, signWithGoogle, signIn, sair, atualizarUser}
+    return {criarConta, signWithGoogle, signIn, sair, atualizarUser, error, loading}
 }
