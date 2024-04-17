@@ -6,7 +6,8 @@ import {
     signOut,
     updateProfile,
     GoogleAuthProvider,
-    signInWithPopup
+    signInWithPopup,
+    signInWithRedirect 
 } from 'firebase/auth';
 
 export const useAuthentication = () => {
@@ -42,7 +43,7 @@ export const useAuthentication = () => {
         const provider = new GoogleAuthProvider();
         try {
             setLoading(true)
-            signInWithPopup(auth, provider)
+            signInWithRedirect(auth, provider)
             setLoading(false)
         } catch (error) {
             setError(error)
