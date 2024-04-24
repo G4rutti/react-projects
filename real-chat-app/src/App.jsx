@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react"
+import React, { useEffect, useState } from "react"
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from "./database/firebase";
 
-
+// Contexts
+import { ThemeProvider } from "./context/ThemeContext";
 
 // Pages
 import SignIn from "./pages/SignIn"
@@ -18,9 +19,9 @@ function App() {
 
   useEffect(() => {
     const listen = onAuthStateChanged(auth, (user) => {
-      if(user){
+      if (user) {
         setAuthUser(user)
-      }else{
+      } else {
         setAuthUser(null)
       }
       setIsAuthReady(true)
@@ -36,15 +37,18 @@ function App() {
       {!isAuthReady ? (
         <p>Loading...</p>
       ) : (
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={authUser? <Home /> : <Navigate to='/signIn' />} />
-            <Route path='/signup' element={authUser ? <Home /> : <SignUp />} />
-            <Route path='/signin' element={authUser ? <Home /> : <SignIn />} />
-            <Route path='/sala/:id' element={authUser ? <ChatRoom /> : <SignIn />} />
-            <Route path='/verPerfil' element={authUser ? <VerPerfil /> : <SignIn />} />
-          </Routes>
-        </BrowserRouter>
+        <ThemeProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path='/' element={authUser ? <Home /> : <Navigate to='/signIn' />} />
+              <Route path='/signup' element={authUser ? <Home /> : <SignUp />} />
+              <Route path='/signin' element={authUser ? <Home /> : <SignIn />} />
+              <Route path='/sala/:id' element={authUser ? <ChatRoom /> : <SignIn />} />
+              <Route path='/verPerfil' element={authUser ? <VerPerfil /> : <SignIn />} />
+            </Routes>
+          </BrowserRouter>
+        </ThemeProvider>
+
       )}
 
     </div>
