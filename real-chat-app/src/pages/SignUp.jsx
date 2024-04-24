@@ -14,7 +14,7 @@ const SignUp = () => {
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [error, setError] = useState(null)
-    const { criarConta, error: erro } = useAuthentication()
+    const { criarConta, signWithGoogle, error: erro } = useAuthentication()
 
 
     const handleSubmit = async (e) => {
@@ -38,7 +38,7 @@ const SignUp = () => {
 
     const handleSubmitGoogle = (e) => {
         e.preventDefault()
-        funcao.signWithGoogle(auth);
+        signWithGoogle(auth);
     }
 
     return (

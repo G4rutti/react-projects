@@ -10,7 +10,7 @@ import { useAuthentication } from '../hooks/useAuthentication';
 const SignIn = () => {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
-  const { signIn, error } = useAuthentication()
+  const { signIn, signWithGoogle, error } = useAuthentication()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
