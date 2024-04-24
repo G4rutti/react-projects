@@ -13,8 +13,8 @@ const SignUp = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-    const [error, setError] = useState("")
-    const funcao = useAuthentication()
+    const [error, setError] = useState(null)
+    const { criarConta, error: erro } = useAuthentication()
 
 
     const handleSubmit = async (e) => {
@@ -31,9 +31,9 @@ const SignUp = () => {
             setError("As senhas nao parecem iguais")
             return
         }
-        funcao.criarConta(auth, usuario)
+        criarConta(auth, usuario)
 
-    
+
     }
 
     const handleSubmitGoogle = (e) => {
@@ -72,6 +72,20 @@ const SignUp = () => {
 
                 </form>
 
+            </div>
+            <div className='w-[80vw] mx-auto relative bottom-[10vh] md:w-[40vw] lg:w-[40vw] xl:w-[30vw] md:bottom-[2vh]'>
+                {error !== null && (
+                    <div role="alert" className="alert alert-error">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>{error}</span>
+                    </div>
+                )}
+                {erro !== null && (
+                    <div role="alert" className="alert alert-error">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <span>{erro}</span>
+                    </div>
+                )}
             </div>
         </div>
     )

@@ -25,7 +25,6 @@ export const useAuthentication = () => {
             setLoading(false)
             return user
         } catch (error) {
-            console.log(error)
             let systemErrorMessage
             if (error.message.includes("Password")) {
                 systemErrorMessage = "A senha deve conter pelo menos 6 caracteres"
@@ -34,7 +33,6 @@ export const useAuthentication = () => {
             } else {
                 systemErrorMessage = "Ocorreu um erro, tente novamente mais tarde"
             }
-            console.log(systemErrorMessage)
             setError(systemErrorMessage)
         }
     }
@@ -58,8 +56,8 @@ export const useAuthentication = () => {
             setLoading(false)
             return data
           } catch (error) {
-            console.log(error)
-          }
+            setError("Usuário ou senha inválidos.")
+        }
     }
 
     function sair(auth){
@@ -75,7 +73,7 @@ export const useAuthentication = () => {
             })
             setLoading(false)
         } catch (error) {
-            console.log(error)
+            setError(error)
         }
         
     }
