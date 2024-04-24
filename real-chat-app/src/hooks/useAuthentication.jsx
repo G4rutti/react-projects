@@ -20,7 +20,8 @@ export const useAuthentication = () => {
             const userCredential = await createUserWithEmailAndPassword(auth, data.email, data.password);
             const user = userCredential.user;
             await updateProfile(user, {
-                displayName: `${data.displayName} ${data.displayLastName}`
+                displayName: `${data.displayName} ${data.displayLastName}`,
+                photoURL: "https://as2.ftcdn.net/v2/jpg/03/49/49/79/1000_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg"
             })
             setLoading(false)
             return user

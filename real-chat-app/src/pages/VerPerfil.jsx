@@ -47,7 +47,7 @@ const VerPerfil = () => {
           <div className='w-full flex flex-col items-center mt-10'>
             <div className="avatar">
               <div className="w-32 rounded">
-                <img src={authUser?.photoURL ? authUser?.photoURL : "https://as2.ftcdn.net/v2/jpg/03/49/49/79/1000_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg"} />
+                <img src={authUser?.photoURL} />
               </div>
             </div>
             <div className='flex flex-col mt-2'>

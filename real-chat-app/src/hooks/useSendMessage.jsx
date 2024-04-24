@@ -6,6 +6,7 @@ export const useSendMessage = async(roomId, user, text) => {
         await addDoc(collection(db, "chat-rooms", roomId, "messages"),{
             uid: user.uid,
             displayName: user.displayName,
+            photoURL: user.photoURL,
             text: text.trim(),
             timestamp: serverTimestamp()
         })

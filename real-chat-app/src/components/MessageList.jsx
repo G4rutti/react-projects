@@ -35,9 +35,14 @@ const MessageList = ({ roomId }) => {
 }
 
 function Message({ message, isOwnMessage }) {
-    const { displayName, text } = message;
+    const { displayName, photoURL, text } = message;
     return (
         <div className={`chat ${isOwnMessage ? "chat-end" : "chat-start"}`}>
+            <div className="chat-image avatar">
+                <div className="w-10 rounded-full">
+                    <img alt="Tailwind CSS chat bubble component" src={photoURL ? photoURL : "https://as2.ftcdn.net/v2/jpg/03/49/49/79/1000_F_349497933_Ly4im8BDmHLaLzgyKg2f2yZOvJjBtlw5.jpg"} />
+                </div>
+            </div>
             <h4 className="chat-header">{isOwnMessage ? 'You' : displayName}</h4>
             <div className='chat-bubble'>{text}</div>
         </div>
