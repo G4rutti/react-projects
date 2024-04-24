@@ -7,6 +7,8 @@ const MessageList = ({ roomId }) => {
     const [user, setUser] = useState(null)
     const containerRef = useRef(null)
     const messages = useMessages(roomId)
+    const reversedMessages = [...messages].reverse();
+
     onAuthStateChanged(auth, (user) => {
         setUser(user)
     });
@@ -20,13 +22,14 @@ const MessageList = ({ roomId }) => {
 
     return (
         <div>
-            {messages.map((item) => (
+            {reversedMessages.map((item) => (
                 <Message
-                key={item.id}
-                message={item}
-                isOwnMessage={item.uid === user.uid}
-            />
+                    key={item.id}
+                    message={item}
+                    isOwnMessage={item.uid === user.uid}
+                />
             ))}
+
         </div>
     )
 }

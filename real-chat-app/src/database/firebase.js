@@ -8,7 +8,7 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyAXHJldBGkVw6XY-BkfLwqUf3JW5eEPSSU",
-    authDomain: "react-projects-fe4o.vercel.app",
+    authDomain: "chat-app-2e59f.firebaseapp.com",
     projectId: "chat-app-2e59f",
     storageBucket: "chat-app-2e59f.appspot.com",
     messagingSenderId: "431136446770",

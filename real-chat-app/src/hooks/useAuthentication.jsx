@@ -43,7 +43,7 @@ export const useAuthentication = () => {
         const provider = new GoogleAuthProvider();
         try {
             setLoading(true)
-            signInWithRedirect(auth, provider)
+            signInWithPopup(auth, provider)
             setLoading(false)
         } catch (error) {
             setError(error)

@@ -43,11 +43,11 @@ const SignUp = () => {
 
     return (
         <div className='w-full flex flex-col mx-auto h-[100vh]'>
-            <div className='w-[80vw] bg-neutral text-neutral-content m-auto py-8 rounded-lg shadow-md'>
+            <div className='w-[80vw] bg-neutral text-neutral-content m-auto py-8 rounded-lg shadow-md md:w-[40vw] lg:w-[40vw] xl:w-[30vw]'>
                 <h1 className='mx-auto text-3xl font-bold uppercase text-center'>Cadastre-se</h1>
                 <form className='w-full flex flex-col py-4 px-8 mt-5 '>
-                    <button className='btn' onClick={handleSubmitGoogle}><FcGoogle /> Cadastrar-se com google</button>
-                    <div className='w-[100%] flex'>
+                    <button className='btn hidden mb-2 md:flex' onClick={handleSubmitGoogle}><FcGoogle /> Cadastrar-se com google</button>
+                    <div className='w-[100%] flex gap-2'>
                         <label htmlFor="nome" className='w-[50%] input input-bordered my-2 py-2 px-4  flex items-center gap-2'>
                             <AiOutlineUser />
                             <input className='w-[100%]' type="text" name='nome' placeholder='Nome' value={displayName} onChange={(e) => setDisplayName(e.target.value)} />

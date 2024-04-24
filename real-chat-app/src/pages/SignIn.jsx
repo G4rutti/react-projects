@@ -25,7 +25,7 @@ const SignIn = () => {
 
   return (
     <div className='w-full flex flex-col mx-auto h-[100vh]'>
-      <div className='w-[80vw] bg-neutral m-auto py-8 rounded-lg shadow-md text-neutral-content'>
+      <div className='w-[80vw] bg-neutral m-auto py-8 rounded-lg shadow-md text-neutral-content md:w-[40vw] lg:w-[40vw] xl:w-[30vw]'>
         <h1 className='mx-auto text-3xl font-bold uppercase text-center'>Entrar</h1>
         <form className='w-full flex flex-col py-4 px-8 mt-5'>
           <label htmlFor="email" className='input input-bordered my-2 py-2 px-4  flex items-center gap-2'>
@@ -39,7 +39,7 @@ const SignIn = () => {
           <Link to='/signup' className='text-sm mb-2 text-center'>Não tenho uma conta <span className='underline'>Cadastrar-se</span></Link>
           <div className='flex px-4 justify-center'>
             <button className='btn mx-2' onClick={handleSubmit}>Entrar</button>
-            <button className='btn' onClick={handleSubmitGoogle}><FcGoogle /> Entrar com google</button>
+            <button className='btn hidden md:flex' onClick={handleSubmitGoogle}><FcGoogle /> Entrar com google</button>
           </div>
 
         </form>

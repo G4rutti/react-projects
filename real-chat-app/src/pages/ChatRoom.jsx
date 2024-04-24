@@ -21,7 +21,7 @@ const ChatRoom = () => {
           <p className='text-4xl font-bold'>-</p>
           <Link to={'/'} className='btn text-xl font-bold'>Voltar</Link>
         </div>
-        <div className='w-[90vw] min-h-[80vh] border border-neutral-content mx-auto justify-center mt-10'>
+        <div className='w-[90vw] max-h-[80vh] md:max-h-[65vh] overflow-auto border border-neutral-content mx-auto justify-center mt-10'>
           <MessageInput roomId={params.id} />
           <MessageList roomId={params.id}/>
         </div>
